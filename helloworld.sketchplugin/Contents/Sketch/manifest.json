@@ -1,0 +1,19 @@
+{
+    "name" : "My Plugin",
+    "identifier" : "my.plugin",
+    "version" : "1.0",
+    "description" : "Relabel plugin",
+    "authorEmail" : "chilli.iitm@gmail.com",
+    "author" : "Imran Parvez",
+
+    "commands" : [
+
+    {
+      "script" : "reLabel.js",
+      "handler" : "onRun",
+      "shortcut" : "command shift u",
+      "name" : "is Text",
+      "identifier" : "my.plugin.reLabel"
+    }
+  ]
+}
