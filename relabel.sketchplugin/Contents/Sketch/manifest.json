@@ -1,8 +1,8 @@
 {
-    "name" : "My Plugin",
-    "identifier" : "my.plugin",
+    "name" : "Relabel",
+    "identifier" : "com.imranparvez.reLabel",
     "version" : "1.0",
-    "description" : "Relabel plugin",
+    "description" : "Relabel plugin to resize the button automatically",
     "authorEmail" : "chilli.iitm@gmail.com",
     "author" : "Imran Parvez",
 
@@ -11,8 +11,8 @@
     {
       "script" : "reLabel.js",
       "handler" : "onRun",
-      "shortcut" : "command shift u",
-      "name" : "is Text",
+      "shortcut" : "command j",
+      "name" : "Relabel",
       "identifier" : "my.plugin.reLabel"
     }
   ]

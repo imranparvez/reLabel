@@ -61,27 +61,32 @@ var onRun = function(context) {
     sketch.message('Selection must be a group containing a button with at least one text layer');
   }
 
-  function offsetObjects(group, oText, nText, rect){
-    var offset = nText.frame.width - oText.frame.width;
+  function offsetObjects(group, off, rect, nText){
     group.iterate(function(layer){
-      if (layer.id == rect.id || layer.id == nText.id){
+      if (layer.id == rect.id || layer.id == nText.id || layer.frame.x < nText.frame.x){
         null
       } else {
-        layer.frame.x = offset + layer.frame.x;
+        layer.frame = {x : layer.frame.x + offset};
       }
     })
   }
 
-  
+
   if(selection.isGroup && hasText(selection) && largestShape(selection)){
 
     buttonRect = largestShape(selection);
     textLayer = hasText(selection);
-
-
+    
     var buttonPadding = getButtonPadding(buttonRect, textLayer);
-    var newText = sketch.getStringFromUser('Button text', textLayer.text);
+    var newText = sketch.getStringFromUser('Enter the button text ', textLayer.text);
+
+    var oldTextwidth = textLayer.frame.width;
     textLayer.text = newText;
+    var newTextWidth = textLayer.frame.width;
+
+    var offset = newTextWidth - oldTextwidth;
+    offsetObjects(selection, offset, buttonRect, textLayer);
+
     buttonRect.frame = {
       width: textLayer.frame.width + buttonPadding.right + buttonPadding.left
     };
